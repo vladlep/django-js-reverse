@@ -23,6 +23,7 @@ Django JS Reverse
 
 Overview
 --------
+**This is an adapted version of the original project to work with multilingual websites. The changes are custom and might not work for others therefore I would recommend to use the original project if needed.**
 
 Django JS Reverse is a small django app that makes url handling of
 `named urls <https://docs.djangoproject.com/en/dev/topics/http/urls/#naming-url-patterns>`_ in javascript easy and non-annoying..
