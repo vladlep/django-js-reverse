@@ -67,6 +67,13 @@
 
             _ref = _ref_list[_i];
             url = _ref[0], url_args = build_kwargs(_ref[1]);
+            var language = window.preferred_language;
+            if(!language){
+                language= document.getElementsByTagName('html')[0].getAttribute('lang');
+            }
+            if (!url.startsWith(language) && language){
+                url = language + url.substring(url.indexOf('/'));
+            }
             for (url_arg in url_args) {
             	var url_arg_value = url_args[url_arg];
             	if (url_arg_value === undefined || url_arg_value === null) {

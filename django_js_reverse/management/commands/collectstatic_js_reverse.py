@@ -8,6 +8,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
 from django.core.management.base import BaseCommand
+from django.utils import translation
 from django_js_reverse.core import generate_js
 from django_js_reverse.js_reverse_settings import JS_OUTPUT_PATH
 
@@ -31,7 +32,10 @@ class Command(BaseCommand):
         fs = FileSystemStorage(location=location)
         if fs.exists(file):
             fs.delete(file)
-
+        try:
+            translation.activate(settings.LANGUAGE_CODE)
+        except AttributeError:
+            pass
         default_urlresolver = urlresolvers.get_resolver(None)
         content = generate_js(default_urlresolver)
         fs.save(file, ContentFile(content))
