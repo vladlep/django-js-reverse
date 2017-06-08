@@ -71,7 +71,7 @@
             if(!language){
                 language= document.getElementsByTagName('html')[0].getAttribute('lang');
             }
-            if (!url.startsWith(language) && language){
+            if (!url.lastIndexOf(language, 0) == 0 && language){
                 url = language + url.substring(url.indexOf('/'));
             }
             for (url_arg in url_args) {
